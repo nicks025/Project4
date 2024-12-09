@@ -1,0 +1,98 @@
+/* General Layout */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ecf0f1;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #1abc9c;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1, h2 {
+  font-size: 2em;
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+select {
+  padding: 10px;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.grade-table {
+  margin-top: 20px;
+}
+
+.grade-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.grade-table table, .grade-table th, .grade-table td {
+  border: 1px solid #ccc;
+}
+
+.grade-table th, .grade-table td {
+  padding: 10px;
+  text-align: center;
+}
