@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./h.css">
+    <link rel="stylesheet" href="../styleeCss/h.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -21,9 +21,10 @@
                 </ul>
             </div>
             <div class="auth-buttons">
-            <button class="login-btn"><a href="./p.php">Login</a></button>
-            <button class="register-btn" style><a href="./reg.php">Register</a></button>
-        </div>
+                <a href="./p.php" class="login-btn">Login</a>
+                <a href="./reg.php" class="register-btn">Register</a>
+            </div>
+
         </nav>
         <div class="text-box">
             <h1>Inspiring Minds, Transforming Lives</h1>
@@ -64,19 +65,19 @@
 
         <div class="row">
             <div class="campus-col">
-                <img src="images/london.png" alt="">
+                <img src="../Image/london.png" alt="">
                 <div class="layer">
                     <h3>It is in london</h3>
                 </div>
             </div>
             <div class="campus-col">
-                <img src="images/washington.png" alt="">
+                <img src="../Image/washington.png" alt="">
                 <div class="layer">
                     <h3>It is in Washington</h3>
                 </div>
             </div>
             <div class="campus-col">
-                <img src="images/newyork.png" alt="">
+                <img src="../Image/newyork.png" alt="">
                 <div class="layer">
                     <h3>It is in Newyork</h3>
                 </div>
@@ -90,17 +91,17 @@
 
         <div class="row">
                 <div class="facilities-col">
-                    <img src="images/library.png" alt="">
+                    <img src="../Image/library.png" alt="">
                     <h3>World Class library</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                 </div>
                 <div class="facilities-col">
-                    <img src="images/basketball.png" alt="">
+                    <img src="../Image/basketball.png" alt="">
                     <h3>Largest Play Ground</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                 </div>
                 <div class="facilities-col">
-                    <img src="images/cafeteria.png" alt="">
+                    <img src="../Image/cafeteria.png" alt="">
                     <h3>Tasty and Healthy Food</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                 </div>
@@ -115,7 +116,7 @@
         <div class="row">
 
             <div class="testimonials-col">
-                <img src="images/nikhil.jpg" alt="">
+                <img src="../Image/nikhil.jpg" alt="">
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod est, nulla laborum labore soluta autem a earum nobis, reiciendis provident nisi quis vel expedita explicabo facere, placeat excepturi velit cum!</p>
                     <h3>Nikhil Thapa</h3>
@@ -126,7 +127,7 @@
                 </div>
             </div>
             <div class="testimonials-col">
-                <img src="images/nishan.jpg" alt="">
+                <img src="../Image/nishan.jpg" alt="">
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod est, nulla laborum labore soluta autem a earum nobis, reiciendis provident nisi quis vel expedita explicabo facere, placeat excepturi velit cum!</p>
                     <h3>Nishan Gurung</h3>

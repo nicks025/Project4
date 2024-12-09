@@ -7,7 +7,7 @@
     min-height: 100vh;
     width:100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7))
-    , url(images/banner.png);
+    , url(../Image/banner.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -51,32 +51,33 @@ nav img{
     font-size: 15px;
     font-family: sans-serif;
 }
-.auth-buttons button {
+.auth-buttons a {
     margin-left: 10px;
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none; 
+    display: inline-block; 
     transition: background-color 0.3s ease;
 }
 
 .login-btn {
-    background-color: #00bcd4;
+    background-color: #33c4de; 
     color: white;
 }
 
 .login-btn:hover {
-    background-color: #007b9e;
+    background-color: #87088b; 
 }
-
 .register-btn {
-    background-color: #555;
+    background-color: #666;
     color: white;
 }
 
 .register-btn:hover {
-    background-color: #444;
+    background-color: #0fad36;
 }
 
 .text-box{
@@ -135,15 +136,15 @@ p{
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Ensures wrapping for smaller screens */
-    gap: 20px; /* Adds space between the divs */
+    flex-wrap: wrap; 
+    gap: 20px; 
 }
 
 .course-col {
-    flex: 1 1 calc(30% - 20px); /* Adjusts width and maintains spacing with `gap` */
+    flex: 1 1 calc(30% - 20px); 
     background: #fff3f3;
     border-radius: 10px;
-    margin-bottom: 0; /* No longer needed due to `gap` */
+    margin-bottom: 0;
     padding: 20px 12px;
     box-sizing: border-box;
     transition: 0.5s;
@@ -273,7 +274,7 @@ h3{
     margin: 100px auto;
     width: 80%;
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7))
-    , url(images/banner2.jpg);
+    , url(../Image/banner2.jpg);
     background-position: center;
     border-radius: 10px;
     text-align: center;
