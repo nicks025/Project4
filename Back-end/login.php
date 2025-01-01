@@ -19,6 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $user = mysqli_fetch_assoc($result);
 
         // Set session variables
+        $_SESSION['id'] = $user['id'];           // Store user ID
         $_SESSION['username'] = $user['username']; // Store username
         $_SESSION['role'] = $user['userType'];     // Store role
         $_SESSION['full_name'] = $user['fullName']; // Store full name

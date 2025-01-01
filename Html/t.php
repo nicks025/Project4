@@ -1,13 +1,10 @@
 <?php
 session_start();
 
-// Ensure user is logged in and has admin role
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== "teacher") {
     header("Location: ../Html/loginPage.php");
     exit();
 }
-
-// Get the admin's full name from the session
 $teacher_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Teacher";
 
 ?>
@@ -17,7 +14,7 @@ $teacher_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Teache
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teacher Dashboard</title>
-  <link rel="stylesheet" href="../styleeCss/teacher.css">
+  <link rel="stylesheet" href="../styleeCss/teacherDash.css">
 </head>
 <body>
   <div class="dashboard">
@@ -27,7 +24,8 @@ $teacher_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Teache
       <ul>
         <li><a href="#">Dashboard</a></li>
         <li><a href="#">Manage Classes</a></li>
-        <li><a href="#">Assignments</a></li>
+        <li><a href="./teacherassign.php">Assignments</a></li>
+        <li><a href="./viewassign.php">View Assignment</a></li>
         <li><a href="#">Students</a></li>
         <li><a href="#">Profile Settings</a></li>
         <li><a href="./loginPage.php">Logout</a></li>
@@ -69,6 +67,11 @@ $teacher_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Teache
       </section>
     </div>
   </div>
+
+    <!-- Footer Section -->
+    <footer>
+  <p>&copy; Teacher Panel</p>
+  </footer>
 
 </body>
 </html>

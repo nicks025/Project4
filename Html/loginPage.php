@@ -24,7 +24,7 @@
    
     <div class="background">
         <div class="login-container">
-            <h2>Student Login</h2>
+            <h2>Login</h2>
             <form action="../Back-end/login.php" method="POST">
             <?php
                 session_start();

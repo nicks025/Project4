@@ -1,0 +1,127 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body and HTML to ensure full height */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between content and footer */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #34495e;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 270px;
+  padding: 20px;
+  flex-grow: 1; /* Makes the main content take up remaining space */
+}
+
+/* Header */
+header h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Overview Section */
+.overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 18px;
+  color: #3498db;
+}
+
+/* Recent Activity Section */
+.recent-activity {
+  margin-top: 30px;
+}
+
+.recent-activity h2 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.recent-activity ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.recent-activity ul li {
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #2c3e50;
+  color: white;
+  border-top: 1px solid #ddd;
+  margin-top: auto; /* This ensures the footer stays at the bottom */
+}
