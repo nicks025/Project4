@@ -1,15 +1,15 @@
 <?php
-// session_start();
-include_once('../Back-end/server.php'); // Include the database connection
+include_once('../Back-end/server.php'); 
 
-// Check if the user is logged in
 if (!isset($_SESSION['id'])) {
     $_SESSION['msg'] = "You need to be logged in to view submissions!";
     header('location: ../Html/loginPage.php');
     exit();
 }
 
-// Fetch all assignments from the database
+$mark_viewed_sql = "UPDATE assignments SET is_viewed = 1 WHERE is_viewed = 0";
+mysqli_query($con, $mark_viewed_sql);
+
 $sql = "SELECT * FROM assignments";
 $result = mysqli_query($con, $sql);
 
@@ -71,7 +71,6 @@ if (!$result) {
     </main>
 </div>
 
-<!-- Footer Section -->
 <footer>
     <p>&copy; Teacher Panel</p>
 </footer>

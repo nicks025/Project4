@@ -1,34 +1,37 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assignment Management</title>
-  <link rel="stylesheet" href="../styleeCss/techerassign.css">
+  <link rel="stylesheet" href="../styleeCss/createassign.css">
 </head>
 <body>
 
 <div class="Assignment">
-<div class="sidebar">
+  <div class="sidebar">
     <h2>Teacher Panel</h2>
     <ul>
-        <li><a href="./t.php">Dashboard</a></li>
-        <li><a href="#">Manage Classes</a></li>
-        <li><a href="./teacherassign.php">Assignments</a></li>
-        <li><a href="#">Students</a></li>
-        <li><a href="#">Profile Settings</a></li>
-        <li><a href="./loginPage.php">Logout</a></li>
+      <li><a href="./t.php">Dashboard</a></li>
+      <li><a href="#">Manage Classes</a></li>
+      <li><a href="./teacherassign.php">Assignments</a></li>
+      <li><a href="#">Students</a></li>
+      <li><a href="#">Profile Settings</a></li>
+      <li><a href="./loginPage.php">Logout</a></li>
     </ul>
-</div>
-
-
+  </div>
 
   <!-- Main Content -->
   <main class="container">
     <!-- Create Assignment Section -->
     <section id="create-assignment">
       <h2>Create New Assignment</h2>
-      <form id="assignmentForm">
+      <?php if(isset($_SESSION['msg'])): ?>
+    <p class="alert"><?php echo $_SESSION['msg']; unset($_SESSION['msg']); ?></p>
+    <?php endif; ?>
+
+      <form id="assignmentForm" action="../Back-end/store_assignment.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="title">Assignment Title:</label>
           <input type="text" id="title" name="title" placeholder="Enter assignment title" required>
@@ -47,7 +50,7 @@
 
         <div class="form-group">
           <label for="due-date">Due Date:</label>
-          <input type="date" id="due-date" name="due-date" required>
+          <input type="date" id="due-date" name="due_date" required>
         </div>
 
         <div class="form-group">
@@ -57,7 +60,7 @@
 
         <div class="form-group">
           <label for="assignment-type">Assignment Type:</label>
-          <select id="assignment-type" name="assignment-type" required>
+          <select id="assignment-type" name="assignment_type" required>
             <option value="">Select Type</option>
             <option value="Multiple Choice">Multiple Choice</option>
             <option value="Short Answer">Short Answer</option>
@@ -67,13 +70,8 @@
         </div>
 
         <div class="form-group">
-          <label for="points">Points/Grade:</label>
-          <input type="number" id="points" name="points" placeholder="Enter total points" required>
-        </div>
-
-        <div class="form-group">
           <label for="file-upload">Upload Files (Optional):</label>
-          <input type="file" id="file-upload" name="file-upload" multiple>
+          <input type="file" id="file-upload" name="file_upload">
         </div>
 
         <div class="form-group">
@@ -83,39 +81,25 @@
 
         <div class="form-group toggle-options">
           <label for="late-submission">Enable Late Submissions:</label>
-          <input type="checkbox" id="late-submission" name="late-submission">
+          <input type="checkbox" id="late-submission" name="late_submission">
           
           <label for="resubmission">Allow Resubmissions:</label>
           <input type="checkbox" id="resubmission" name="resubmission">
-          
-          <label for="collaboration">Enable Collaboration:</label>
-          <input type="checkbox" id="collaboration" name="collaboration">
         </div>
 
         <div class="form-buttons">
-          <button type="button" class="btn save-draft" onclick="saveDraft()">Save Draft</button>
           <button type="submit" class="btn publish">Publish Assignment</button>
-          <button type="reset" class="btn cancel" onclick="clearForm()">Cancel</button>
+          <button type="reset" class="btn cancel">Cancel</button>
         </div>
       </form>
-    </section>
-
-    <!-- View Assignments Section -->
-    <section id="view-assignments" style="display: none;">
-      <h2>View Submitted Assignments</h2>
-      <div id="assignments-list">
-        <!-- Submitted assignments will be listed here dynamically -->
-      </div>
-      <button class="btn back-to-create" onclick="showCreateAssignment()">Back to Create Assignment</button>
     </section>
   </main>
 </div>
 
-  <!-- Footer Section -->
-  <footer>
+<!-- Footer Section -->
+<footer>
   <p>&copy; Teacher Panel</p>
-  </footer>
+</footer>
 
-  <script src="../JS/assigns.js"></script>
 </body>
 </html>

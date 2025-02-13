@@ -1,14 +1,21 @@
+<?php
+include_once('../Back-end/server.php'); // Database connection
+
+// Fetch all assignments from teacher_assignments table
+$sql = "SELECT * FROM teacher_assignments ORDER BY due_date ASC";
+$result = mysqli_query($con, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assignment Submission</title>
-  
-  <link rel="stylesheet" href="../styleeCss/assign.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assignments</title>
+    <link rel="stylesheet" href="../styleeCss/assign.css">
 </head>
 <body>
-  <div class="dashboard">
+<div class="dashboard">
     <!-- Sidebar -->
     <div class="sidebar">
       <h2>Student Portal</h2>
@@ -17,80 +24,64 @@
         <li><a href="./assignment.php">Assignments</a></li>
         <li><a href="./exam.php">Exams</a></li>
         <li><a href="./course.php">Courses</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="studentProfile.php">Profile</a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="./loginPage.php">Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-      <header>
-        <h1>Submit Your Assignments</h1>
-      </header>
-      <!-- Assignment List Section -->
-      <section class="assignments">
-        <h2>Available Assignments</h2>
-        
-        <!-- Assignment for Math -->
-        <div class="assignment-card">
-          <h3>Math</h3>
-          <p>Due Date: 15th October</p>
-          <form id="math-assignment" action="../Back-end/assign.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="subject" value="Math"> <!-- Hidden subject field -->
-            <label for="math-file">Upload File:</label>
-            <input type="file" id="math-file" name="assign" required>
-            <?php
-              session_start();
-              if (isset($_SESSION['msg']) && $_SESSION['subject'] === 'Math') {
-                  echo '<div class="alert">' . $_SESSION['msg'] . '</div>';
-                  unset($_SESSION['msg']);
-                  unset($_SESSION['subject']);
-              }
-            ?>
-            <button type="submit">Submit Assignment</button>
-          </form>
-        </div>
+    <div class="container">
+        <h2 class="header-top">📚 Student Assignments</h2>
 
-        <!-- Assignment for Science -->
-        <div class="assignment-card">
-          <h3>Science</h3>
-          <p>Due Date: 18th October</p>
-          <form id="science-assignment" action="../Back-end/assign.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="subject" value="Science">
-            <label for="science-file">Upload File:</label>
-            <input type="file" id="science-file" name="assign" required>
-            <?php
-              if (isset($_SESSION['msg']) && $_SESSION['subject'] === 'Science') {
-                  echo '<div class="alert">' . $_SESSION['msg'] . '</div>';
-                  unset($_SESSION['msg']);
-                  unset($_SESSION['subject']);
-              }
-            ?>
-            <button type="submit">Submit Assignment</button>
-          </form>
-        </div>
+        <?php if(isset($_SESSION['msg'])): ?>
+            <p class="alert"> <?php echo $_SESSION['msg']; unset($_SESSION['msg']); ?> </p>
+        <?php endif; ?>
 
-        <!-- Assignment for English -->
-        <div class="assignment-card">
-          <h3>English</h3>
-          <p>Due Date: 20th October</p>
-          <form id="english-assignment" action="../Back-end/assign.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="subject" value="English">
-            <label for="english-file">Upload File:</label>
-            <input type="file" id="english-file" name="assign" required>
-            <?php
-              if (isset($_SESSION['msg']) && $_SESSION['subject'] === 'English') {
-                  echo '<div class="alert">' . $_SESSION['msg'] . '</div>';
-                  unset($_SESSION['msg']);
-                  unset($_SESSION['subject']);
-              }
-            ?>
-            <button type="submit">Submit Assignment</button>
-          </form>
-        </div>
-      </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Due Date</th>
+                    <th>Description</th>
+                    <th>File</th>
+                    <th>Submit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['title']); ?></td>
+                    <td><?php echo htmlspecialchars($row['subject']); ?></td>
+                    <td><?php echo htmlspecialchars($row['due_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['description']); ?></td>
+                    <td>
+                        <?php if($row['file_path']): ?>
+                            <a href="../uploads/<?php echo $row['file_path']; ?>" download>📂 Download</a>
+                        <?php else: ?>
+                            No File
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <form action="../Back-end/assign.php" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="assignment_id" value="<?php echo $row['id']; ?>">
+                            <input type="text" name="subject" placeholder="Subject Name" required>
+                            <input type="file" name="assign" required>
+                            <button type="submit">Upload</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+
+                <?php if(mysqli_num_rows($result) == 0): ?>
+                    <tr>
+                        <td colspan="6" class="no-assignments">No assignments available.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
-  </div>
+</div>
+
 </body>
 </html>

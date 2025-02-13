@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-// Ensure user is logged in and has admin role
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== "admin") {
     header("Location: ../Html/loginPage.php");
     exit();
 }
 
-// Get the admin's full name from the session
 $admin_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Admin";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +24,9 @@ $admin_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Admin";
             <h2>Admin Panel</h2>
             <ul>
                 <li><a href="a.php">Dashboard</a></li>
-                <li><a href="manage_users.php">Manage Users</a></li>
+                <li><a href="add-student.php">Manage Users</a></li>
                 <li><a href="manage_courses.php">Manage Courses</a></li>
-                <li><a href="manage_assignments.php">Manage Assignments</a></li>
-                <li><a href="manage_exams.php">Manage Exams</a></li>
+                <li><a href="adminassi.php">Manage Assignments</a></li>
                 <li><a href="admin_settings.php">Settings</a></li>
                 <li><a href="./loginPage.php">Logout</a></li>
             </ul>

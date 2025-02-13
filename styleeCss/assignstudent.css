@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.student-assignments {
+  width: 80%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.assignment-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.assignment-item h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.assignment-item p {
+  margin: 5px 0;
+}
+
+.assignment-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.assignment-item a:hover {
+  text-decoration: underline;
+}
+
+.submission-form {
+  margin-top: 15px;
+}
+
+.submission-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.submission-form input[type="text"],
+.submission-form input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submission-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submission-form button:hover {
+  background-color: #0056b3;
+}

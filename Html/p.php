@@ -30,7 +30,7 @@ $student_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "Studen
         <li><a href="./assignment.php">Assignments</a></li>
         <li><a href="./exam.php">Exams</a></li>
         <li><a href="./course.php">Courses</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="studentProfile.php">Profile</a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="./loginPage.php">Logout</a></li>
       </ul>

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usertype = $_POST['type'];
 
     // Validate full name
-    if (!preg_match("/^[a-zA-Z ]{3,}$/", $fullname)) {
+    if (!preg_match("/^[a-zA-Z ]$/", $fullname)) {
         $_SESSION['nameError'] = "Invalid full name.";
         $isValid = false;
     }
@@ -39,33 +39,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate guardian's name
-    if (!preg_match("/^[a-zA-Z ]{3,}$/", $parent)) {
+    if (!preg_match("/^[a-zA-Z ]$/", $parent)) {
         $_SESSION['parentError'] = "Invalid guardian name.";
         $isValid = false;
     }
    
-
-            //If validated.
             if($isValid){
-                // Database connection
                 $con = mysqli_connect('localhost', 'root', '', 'educationportal');
              if (!$con) {
                     $_SESSION['msg'] = "Registration Failed: Unable to connect to the database.";
-                    // header('Location: ../Html/reg.php');
-                    // exit();
+                    header('Location: ../Html/reg.php');
+                    exit();
                     }
-  
-                    // Check for duplicate email
+
                     $emailCheckQuery = "SELECT * FROM user WHERE Email = '$email'";
                     $emailCheckResult = mysqli_query($con, $emailCheckQuery);
 
                if (mysqli_num_rows($emailCheckResult) > 0) {
                   $_SESSION['msg'] = "Registration Failed: Email already registered.";
-                // header('Location: ../Html/reg.php');
-                //  exit();
+                header('Location: ../Html/reg.php');
+                 exit();
                 }
 
-                // Insert data into the database
                  $sql = "INSERT INTO user (fullName, Email, password, phone, parents, userType) 
                         VALUES ('$fullname','$email', '$password',  '$number', '$parent', '$usertype')";
 
